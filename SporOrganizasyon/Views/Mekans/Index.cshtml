@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SporOrganizasyon.Models.Mekan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MekanAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilceler.Ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MekanAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilceler.Ad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Mid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Mid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Mid })
+        </td>
+    </tr>
+}
+
+</table>
