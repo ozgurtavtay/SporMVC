@@ -157,12 +157,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DenemeController.cs" />
+    <Compile Include="Controllers\EtkinliksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullanicisController.cs" />
     <Compile Include="Controllers\MekansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ErrorLog.cs" />
     <Compile Include="Models\Etkinlik.cs">
       <DependentUpon>Spor.tt</DependentUpon>
     </Compile>
@@ -273,8 +275,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kullanicis\Create.cshtml" />
     <Content Include="Views\Kullanicis\Delete.cshtml" />
@@ -287,6 +287,11 @@
     <Content Include="Views\Mekans\Edit.cshtml" />
     <Content Include="Views\Mekans\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Etkinliks\Create.cshtml" />
+    <Content Include="Views\Etkinliks\Delete.cshtml" />
+    <Content Include="Views\Etkinliks\Details.cshtml" />
+    <Content Include="Views\Etkinliks\Edit.cshtml" />
+    <Content Include="Views\Etkinliks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,13 +9,14 @@ namespace SporOrganizasyon.Models
 {
     public class SessionContext
     {
+        ErrorLog Error = new ErrorLog();
         public void SetAuthenticationToken(string name, bool isPersistant, Kullanici userData)
         {
             string data = null;
             if (userData != null)
                 data = new JavaScriptSerializer().Serialize(userData);
 
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, name, DateTime.Now, DateTime.Now.AddYears(1), isPersistant, userData.Kid.ToString());
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, name, DateTime.Now, DateTime.Now.AddYears(1), isPersistant, data);
 
             string cookieData = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookieData)
@@ -43,6 +44,8 @@ namespace SporOrganizasyon.Models
             }
             catch (Exception ex)
             {
+                Error.Hata(ex);
+                throw;
             }
 
             return userData;

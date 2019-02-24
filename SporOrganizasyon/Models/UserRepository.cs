@@ -11,8 +11,7 @@ namespace SporOrganizasyon.Models
         public Kullanici GetByUsernameAndPassword(Kullanici user)
         {
             context.Configuration.ProxyCreationEnabled = false;
-            var x = context.Kullanici.Where(u => u.Email == user.Email & u.Sifre == user.Sifre).FirstOrDefault();
-            return x;
+            return context.Kullanici.Where(u => u.Email == user.Email & u.Sifre == user.Sifre).FirstOrDefault();
         }
     }
 }

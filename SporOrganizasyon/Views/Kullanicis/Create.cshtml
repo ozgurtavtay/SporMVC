@@ -7,33 +7,6 @@
 
 <h2>Create</h2>
 
-@*<div class="typing-content">
-    <h3>Test</h3>
-    <form class="flowform jspost" action="index.html" method="post">
-        <div class="form-group visible">
-            <label for="q1">What is Your Name and Surname ?</label>
-            <input type="text" id="q1" name="name" class="form-control toenter" targetbtn="q1btn">
-            <button type="button" class="btn btn-default flowbutton" id="q1btn">Continue</button>
-        </div>
-        <div class="form-group">
-            <label for="q2">Phone Number:</label>
-            <input type="tel" id="q2" name="phone" class="form-control toenter" targetbtn="q2btn">
-            <button type="button" class="btn btn-default flowbutton" id="q2btn">Continue</button>
-        </div>
-        <div class="form-group">
-            <label for="q3">What is your mail adress?</label>
-            <input type="email" id="q3" name="email" class="form-control toenter" targetbtn="q3btn">
-            <button type="button" class="btn btn-default flowbutton" id="q3btn">Continue</button>
-        </div>
-        <div class="form-group">
-            <label for="q4">Son?</label>
-            <input type="text" id="q4" name="last" class="form-control toenter" targetbtn="q4btn">
-            <button type="submit" class="btn btn-default" id="q4btn">Submit</button>
-        </div>
-    </form>
-</div>*@
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

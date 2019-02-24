@@ -1,0 +1,74 @@
+﻿@model SporOrganizasyon.Models.Etkinlik
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Etkinlik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EtkinlikAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtkinlikAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MekanID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MekanID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EtkinlikTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtkinlikTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kontenjan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kontenjan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EtkinlikTipi.Tip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtkinlikTipi.Tip)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EtkinlikId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

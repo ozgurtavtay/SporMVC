@@ -17,6 +17,7 @@ namespace SporOrganizasyon.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(Kullanici user)
         {

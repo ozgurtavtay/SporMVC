@@ -11,112 +11,112 @@ using SporOrganizasyon.Models;
 namespace SporOrganizasyon.Controllers
 {
     [Authorize]
-    public class MekansController : Controller
+    public class EtkinliksController : Controller
     {
         private SporOEntities db = new SporOEntities();
 
-        // GET: Mekans
+        // GET: Etkinliks
         public ActionResult Index()
         {
-            var mekan = db.Mekan.Include(m => m.Ilceler);
-            return View(mekan.ToList());
+            var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi);
+            return View(etkinlik.ToList());
         }
 
-        // GET: Mekans/Details/5
+        // GET: Etkinliks/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mekan mekan = db.Mekan.Find(id);
-            if (mekan == null)
+            Etkinlik etkinlik = db.Etkinlik.Find(id);
+            if (etkinlik == null)
             {
                 return HttpNotFound();
             }
-            return View(mekan);
+            return View(etkinlik);
         }
 
-        // GET: Mekans/Create
+        // GET: Etkinliks/Create
         public ActionResult Create()
         {
-            ViewBag.IlceId = new SelectList(db.Ilceler, "Id", "Ad");
+            ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip");
             return View();
         }
 
-        // POST: Mekans/Create
+        // POST: Etkinliks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Mid,MekanAdi,IlceId")] Mekan mekan)
+        public ActionResult Create([Bind(Include = "EtkinlikId,EtkinlikAdi,TipId,MekanID,EtkinlikTarihi,Kontenjan,isActive,Sid")] Etkinlik etkinlik)
         {
             if (ModelState.IsValid)
             {
-                db.Mekan.Add(mekan);
+                db.Etkinlik.Add(etkinlik);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IlceId = new SelectList(db.Ilceler, "Id", "Ad", mekan.IlceId);
-            return View(mekan);
+            ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            return View(etkinlik);
         }
 
-        // GET: Mekans/Edit/5
+        // GET: Etkinliks/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mekan mekan = db.Mekan.Find(id);
-            if (mekan == null)
+            Etkinlik etkinlik = db.Etkinlik.Find(id);
+            if (etkinlik == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IlceId = new SelectList(db.Ilceler, "Id", "Ad", mekan.IlceId);
-            return View(mekan);
+            ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            return View(etkinlik);
         }
 
-        // POST: Mekans/Edit/5
+        // POST: Etkinliks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Mid,MekanAdi,IlceId")] Mekan mekan)
+        public ActionResult Edit([Bind(Include = "EtkinlikId,EtkinlikAdi,TipId,MekanID,EtkinlikTarihi,Kontenjan,isActive,Sid")] Etkinlik etkinlik)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mekan).State = EntityState.Modified;
+                db.Entry(etkinlik).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IlceId = new SelectList(db.Ilceler, "Id", "Ad", mekan.IlceId);
-            return View(mekan);
+            ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            return View(etkinlik);
         }
 
-        // GET: Mekans/Delete/5
+        // GET: Etkinliks/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mekan mekan = db.Mekan.Find(id);
-            if (mekan == null)
+            Etkinlik etkinlik = db.Etkinlik.Find(id);
+            if (etkinlik == null)
             {
                 return HttpNotFound();
             }
-            return View(mekan);
+            return View(etkinlik);
         }
 
-        // POST: Mekans/Delete/5
+        // POST: Etkinliks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mekan mekan = db.Mekan.Find(id);
-            db.Mekan.Remove(mekan);
+            Etkinlik etkinlik = db.Etkinlik.Find(id);
+            db.Etkinlik.Remove(etkinlik);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

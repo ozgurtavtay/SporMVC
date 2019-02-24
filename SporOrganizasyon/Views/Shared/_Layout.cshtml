@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="leftside">
-                        <h2>Welcome</h2>
+                        <h2>@Html.ActionLink("Welcome", "Index", "Home")</h2>
                     </div>
                     <a class="nav-trigger" href="#0">
                         <span class="menu-text">Menu</span><span class="menu-icon"></span>
@@ -29,8 +29,8 @@
     <nav>
         <ul class="primary-nav">
 
-            <li><a href="#0">Etkinlik</a></li>
-            <li><a href="#0">Mekan</a></li>
+            <li>@Html.ActionLink("Etkinlik Oluştur", "Create", "Etkinliks")</li>
+            <li>@Html.ActionLink("Mekan", "Index", "Mekans")</li>
             <li><a href="#0">Grup</a></li>
             <li><a href="#login">Join In</a></li>
             <li><a href="#register">Create an account</a></li>

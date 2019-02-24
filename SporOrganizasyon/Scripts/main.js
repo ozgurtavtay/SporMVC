@@ -228,7 +228,6 @@ jQuery(document).ready(function($) {
         var x = $(".form-question.login.visible").index() - 1;
         console.log(x);
         $(".form-question.login.visible").removeClass('visible');
-        $(".form-question.login.visible").prev(".form-question.login").addClass("visible");
         $(".form-question.login").eq(x).addClass('visible');
         $(".form-question.login:visible").find('.form-control.login').focus();
         i--;
@@ -251,17 +250,16 @@ jQuery(document).ready(function($) {
 		a++;
 		b++;
         console.log(inputs);
-		if (a == a) {
+		if (a == c) {
             $('#flowbutton.register').removeClass('visible');
 		}
     });
 
     $(".backbutton.register").on('click', function () {
-        var d = $(".form-question.register.visible").index() - 1;
+        var x = $(".form-question.register.visible").index() - 2;
         console.log(x);
         $(".form-question.register.visible").removeClass('visible');
-        $(".form-question.register.visible").prev(".form-question.register").addClass("visible");
-        $(".form-question.register").eq(d).addClass('visible');
+        $(".form-question.register").eq(x).addClass('visible');
         $(".form-question.register:visible").find('.form-control.register').focus();
         a--;
         b--;

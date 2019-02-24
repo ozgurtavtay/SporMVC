@@ -10,6 +10,12 @@ body.overflow-hidden {
 html,
 body {
     height: 100%;
+    color: white;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
 }
 
 a {
