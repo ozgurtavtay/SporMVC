@@ -74,7 +74,7 @@ namespace SporOrganizasyon.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "Kid,Ad,Soyad,Email,Telefon,Sifre,Ilce,DogumTarihi,Cinsiyet,isLogin")] Kullanici kullanici, int[] sporlar)
+        public ActionResult Register([Bind(Prefix = "Item1")] Kullanici kullanici, int[] sporlar)
         {
             if (ModelState.IsValid)
             {
