@@ -276,11 +276,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Kullanicis\Create.cshtml" />
-    <Content Include="Views\Kullanicis\Delete.cshtml" />
-    <Content Include="Views\Kullanicis\Details.cshtml" />
-    <Content Include="Views\Kullanicis\Edit.cshtml" />
-    <Content Include="Views\Kullanicis\Index.cshtml" />
+    <Content Include="Views\Kullanici\index.cshtml" />
+    <Content Include="Views\Kullanici\Edit.cshtml" />
     <Content Include="Views\Mekans\Create.cshtml" />
     <Content Include="Views\Mekans\Delete.cshtml" />
     <Content Include="Views\Mekans\Details.cshtml" />

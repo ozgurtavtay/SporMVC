@@ -11,20 +11,24 @@ using SporOrganizasyon.Models;
 namespace SporOrganizasyon.Controllers
 {
     [Authorize]
-    public class KullanicisController : Controller
+    public class KullaniciController : Controller
     {
         private SporOEntities db = new SporOEntities();
-
-        // GET: Kullanicis
-        public ActionResult Index()
-        {
-            var kullanicilar = db.Kullanici.ToList();
-            return View(kullanicilar);
-        }
+        SessionContext context = new SessionContext();
 
         // GET: Kullanicis/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Index()
         {
+            ViewBag.isLogin = false;
+            ViewBag.User = "";
+            int? id = null;
+            if (context.GetUserData() != null)
+            {
+                ViewBag.isLogin = true;
+                ViewBag.User = context.GetUserData().Ad;
+                id = context.GetUserData().Kid;
+            }
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,39 +38,6 @@ namespace SporOrganizasyon.Controllers
             {
                 return HttpNotFound();
             }
-            return View(kullanici);
-        }
-
-        // GET: Kullanicis/Create
-        public ActionResult Create()
-        {
-            var sporlar = db.Sporlar.ToList();
-            return View(Tuple.Create<Kullanici, List<Sporlar>>(new Kullanici(), sporlar));
-        }
-
-        // POST: Kullanicis/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Kid,Ad,Soyad,Email,Telefon,Sifre,Ilce,DogumTarihi,Cinsiyet,isLogin")] Kullanici kullanici, int[] sporlar)
-        {
-            if (ModelState.IsValid)
-            {
-                List<Sporlar> Sporlar = new List<Sporlar>();
-                foreach (var item in sporlar)
-                {
-                    var kullanicispor = from spor in db.Sporlar where spor.SporId == item select spor;
-                    Sporlar.Add(kullanicispor.Single());
-                }
-                kullanici.Sporlar = Sporlar;
-                db.Kullanici.Add(kullanici);
-                db.SaveChanges();
-
-
-                return RedirectToAction("Index");
-            }
-
             return View(kullanici);
         }
 
