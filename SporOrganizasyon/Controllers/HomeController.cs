@@ -19,6 +19,11 @@ namespace SporOrganizasyon.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.isLogin = false;
+            if (context.GetUserData() != null)
+            {
+                ViewBag.isLogin = true;
+            }
             var sporlar = db.Sporlar.ToList();
             var etkinlik = db.EtkinlikAl().ToList();
             return View(Tuple.Create<Kullanici, EtkinlikAl_Result, List<Sporlar>, List<EtkinlikAl_Result>>(new Kullanici(), new EtkinlikAl_Result(), sporlar, etkinlik));
