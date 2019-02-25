@@ -20,9 +20,11 @@ namespace SporOrganizasyon.Controllers
         public ActionResult Index()
         {
             ViewBag.isLogin = false;
+            ViewBag.User = "";
             if (context.GetUserData() != null)
             {
                 ViewBag.isLogin = true;
+                ViewBag.User = context.GetUserData().Ad;
             }
             var sporlar = db.Sporlar.ToList();
             var etkinlik = db.EtkinlikAl().ToList();
