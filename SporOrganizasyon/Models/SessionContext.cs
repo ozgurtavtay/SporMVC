@@ -31,10 +31,11 @@ namespace SporOrganizasyon.Models
         public Kullanici GetUserData()
         {
             Kullanici userData = null;
-
+            
             try
             {
                 HttpCookie cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+                
                 if (cookie != null)
                 {
                     FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);

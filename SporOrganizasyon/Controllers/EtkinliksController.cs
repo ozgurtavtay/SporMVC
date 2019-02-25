@@ -40,6 +40,7 @@ namespace SporOrganizasyon.Controllers
         // GET: Etkinliks/Create
         public ActionResult Create()
         {
+            ViewBag.Sporlar = new SelectList(db.Sporlar, "SporId", "SporAdi");
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip");
             return View();
         }

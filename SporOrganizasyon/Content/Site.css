@@ -507,11 +507,11 @@ form.flowform {
         height: 100px;
     }
 
-textarea.form-control {
+.flowform textarea.form-control {
     height: 100px;
 }
 
-.form-control {
+.flowform .form-control {
     background-color: transparent;
     border: none;
     box-shadow: none;
@@ -522,11 +522,11 @@ textarea.form-control {
     margin-bottom: 10%;
 }
 
-    .form-control:focus {
-        outline: none;
-        box-shadow: none;
-        border: none;
-    }
+.flowform .form-control:focus {
+     outline: none;
+     box-shadow: none;
+     border: none;
+ }
 
 .round-primary.fade-in,
 .round-second.fade-in {

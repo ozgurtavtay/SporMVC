@@ -50,77 +50,61 @@
                 @Html.AntiForgeryToken()
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-question register visible">
-                    @Html.LabelFor(model => model.Item1.Ad)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Ad, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q1btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Ad, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default flowbutton register" id="q1btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Soyad)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Soyad, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q2btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Soyad, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q2btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Email)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Email, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q3btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Email, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q3btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Telefon)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Telefon, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q4btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Telefon, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q4btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Sifre)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Sifre, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q5btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Sifre, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q5btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Ilce)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Ilce, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q6btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Ilce, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q6btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.DogumTarihi)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.DogumTarihi, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q7btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.DogumTarihi, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q7btn">continue</button>
-                    </div>
-                </div>
-                <div class="form-question register">
-                    @Html.LabelFor(model => model.Item1.Cinsiyet)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Item1.Cinsiyet, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q8btn" } })
-                        @Html.ValidationMessageFor(model => model.Item1.Cinsiyet, "", new { @class = "text-danger" })
-                        <button type="button" class="btn btn-default backbutton register">Geri</button>
-                        <button type="button" class="btn btn-default flowbutton register" id="q8btn">continue</button>
-                    </div>
-                </div>
+            <div class="form-question register visible">
+                @Html.LabelFor(model => model.Item1.Ad)
+                @Html.EditorFor(model => model.Item1.Ad, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q1btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Ad, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default flowbutton register" id="q1btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Soyad)
+                @Html.EditorFor(model => model.Item1.Soyad, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q2btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Soyad, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q2btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Email)
+                @Html.EditorFor(model => model.Item1.Email, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q3btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Email, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q3btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Telefon)
+                @Html.EditorFor(model => model.Item1.Telefon, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q4btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Telefon, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q4btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Sifre)
+                @Html.EditorFor(model => model.Item1.Sifre, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q5btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Sifre, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q5btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Ilce)
+                @Html.EditorFor(model => model.Item1.Ilce, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q6btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Ilce, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q6btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.DogumTarihi)
+                @Html.EditorFor(model => model.Item1.DogumTarihi, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q7btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.DogumTarihi, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q7btn">continue</button>
+            </div>
+            <div class="form-question register">
+                @Html.LabelFor(model => model.Item1.Cinsiyet)
+                @Html.EditorFor(model => model.Item1.Cinsiyet, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q8btn" } })
+                @Html.ValidationMessageFor(model => model.Item1.Cinsiyet, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-default backbutton register">Geri</button>
+                <button type="button" class="btn btn-default flowbutton register" id="q8btn">continue</button>
+            </div>
                 <div class="form-question register">
 
                     @Html.Label("Spor Secin")

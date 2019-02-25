@@ -41,6 +41,7 @@ namespace SporOrganizasyon.Controllers
         public ActionResult Create()
         {
             ViewBag.IlceId = new SelectList(db.Ilceler, "Id", "Ad");
+            ViewBag.Iller = new SelectList(db.Iller, "Id", "Sehir");
             return View();
         }
 
