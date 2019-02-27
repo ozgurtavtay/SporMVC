@@ -40,15 +40,14 @@ namespace SporOrganizasyon.Controllers
         // GET: Mekans/Create
         public ActionResult Create()
         {
-            var gg = (from ilce in db.Ilceler
+            var IlIce = (from ilce in db.Ilceler
                       select new
                       {
                           ilce.Id,
                           ilce.Ad,
                           ilce.Iller.Sehir
                       });
-            ViewBag.IlceId = new SelectList(gg, "Id", "Ad", "Sehir", 1);
-            ViewBag.Iller = new SelectList(db.Iller, "Id", "Sehir");
+            ViewBag.IlceId = new SelectList(IlIce, "Id", "Ad", "Sehir", 1);
 
             return View();
         }

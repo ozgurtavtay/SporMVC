@@ -155,9 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DenemeController.cs" />
-    <Compile Include="Controllers\EtkinliksController.cs" />
+    <Compile Include="Controllers\EtkinlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullanicisController.cs" />
     <Compile Include="Controllers\MekansController.cs" />
@@ -283,12 +281,11 @@
     <Content Include="Views\Mekans\Details.cshtml" />
     <Content Include="Views\Mekans\Edit.cshtml" />
     <Content Include="Views\Mekans\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Etkinliks\Create.cshtml" />
-    <Content Include="Views\Etkinliks\Delete.cshtml" />
-    <Content Include="Views\Etkinliks\Details.cshtml" />
-    <Content Include="Views\Etkinliks\Edit.cshtml" />
-    <Content Include="Views\Etkinliks\Index.cshtml" />
+    <Content Include="Views\Etkinlik\Create.cshtml" />
+    <Content Include="Views\Etkinlik\Delete.cshtml" />
+    <Content Include="Views\Etkinlik\Details.cshtml" />
+    <Content Include="Views\Etkinlik\Edit.cshtml" />
+    <Content Include="Views\Etkinlik\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

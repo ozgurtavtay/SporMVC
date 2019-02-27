@@ -122,6 +122,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Etkinlik_Mekan">
+          <End Role="Mekan" Type="Self.Mekan" Multiplicity="1" />
+          <End Role="Etkinlik" Type="Self.Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mekan">
+              <PropertyRef Name="Mid" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="MekanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etkinlik_Sporlar">
+          <End Role="Sporlar" Type="Self.Sporlar" Multiplicity="1" />
+          <End Role="Etkinlik" Type="Self.Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sporlar">
+              <PropertyRef Name="SporId" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="Sid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ilceler_Iller">
           <End Role="Iller" Type="Self.Iller" Multiplicity="1" />
           <End Role="Ilceler" Type="Self.Ilceler" Multiplicity="*" />
@@ -259,6 +283,14 @@
             <End Role="EtkinlikTipi" EntitySet="EtkinlikTipi" />
             <End Role="Etkinlik" EntitySet="Etkinlik" />
           </AssociationSet>
+          <AssociationSet Name="FK_Etkinlik_Mekan" Association="Self.FK_Etkinlik_Mekan">
+            <End Role="Mekan" EntitySet="Mekan" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Etkinlik_Sporlar" Association="Self.FK_Etkinlik_Sporlar">
+            <End Role="Sporlar" EntitySet="Sporlar" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ilceler_Iller" Association="Self.FK_Ilceler_Iller">
             <End Role="Iller" EntitySet="Iller" />
             <End Role="Ilceler" EntitySet="Ilceler" />
@@ -302,6 +334,8 @@
           <Property Name="Sid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EtkinlikTipi" Relationship="Self.FK_Etkinlik_EtkinlikTipi" FromRole="Etkinlik" ToRole="EtkinlikTipi" />
           <NavigationProperty Name="Kullanici" Relationship="Self.Katilanlar" FromRole="Etkinlik" ToRole="Kullanici" />
+          <NavigationProperty Name="Sporlar" Relationship="SporOModel.FK_Etkinlik_Sporlar" FromRole="Etkinlik" ToRole="Sporlar" />
+          <NavigationProperty Name="Mekan" Relationship="SporOModel.FK_Etkinlik_Mekan" FromRole="Etkinlik" ToRole="Mekan" />
         </EntityType>
         <EntityType Name="EtkinlikTipi">
           <Key>
@@ -367,6 +401,7 @@
           <Property Name="MekanAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IlceId" Type="Int32" />
           <NavigationProperty Name="Ilceler" Relationship="Self.FK_Mekan_Ilceler" FromRole="Mekan" ToRole="Ilceler" />
+          <NavigationProperty Name="Etkinlik" Relationship="SporOModel.FK_Etkinlik_Mekan" FromRole="Mekan" ToRole="Etkinlik" />
         </EntityType>
         <EntityType Name="Sporlar">
           <Key>
@@ -376,6 +411,7 @@
           <Property Name="SporAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SporcuSayisi" Type="Int32" />
           <NavigationProperty Name="Kullanici" Relationship="Self.KullaniciSpor" FromRole="Sporlar" ToRole="Kullanici" />
+          <NavigationProperty Name="Etkinlik" Relationship="SporOModel.FK_Etkinlik_Sporlar" FromRole="Sporlar" ToRole="Etkinlik" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -501,6 +537,14 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Etkinlik_Sporlar" Association="SporOModel.FK_Etkinlik_Sporlar">
+            <End Role="Sporlar" EntitySet="Sporlar" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Etkinlik_Mekan" Association="SporOModel.FK_Etkinlik_Mekan">
+            <End Role="Mekan" EntitySet="Mekan" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="EtkinlikAl_Result">
           <Property Type="Int32" Name="EtkinlikId" Nullable="false" />
@@ -525,6 +569,30 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_Etkinlik_Sporlar">
+          <End Type="SporOModel.Sporlar" Role="Sporlar" Multiplicity="1" />
+          <End Type="SporOModel.Etkinlik" Role="Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sporlar">
+              <PropertyRef Name="SporId" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="Sid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etkinlik_Mekan">
+          <End Type="SporOModel.Mekan" Role="Mekan" Multiplicity="1" />
+          <End Type="SporOModel.Etkinlik" Role="Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mekan">
+              <PropertyRef Name="Mid" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="MekanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

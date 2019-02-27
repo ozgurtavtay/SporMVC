@@ -18,6 +18,15 @@ using System;
 public partial class Mekan
 {
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Mekan()
+    {
+
+        this.Etkinlik = new HashSet<Etkinlik>();
+
+    }
+
+
     public int Mid { get; set; }
 
     public string MekanAdi { get; set; }
@@ -27,6 +36,10 @@ public partial class Mekan
 
 
     public virtual Ilceler Ilceler { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Etkinlik> Etkinlik { get; set; }
 
 }
 

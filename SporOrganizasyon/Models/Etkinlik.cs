@@ -51,6 +51,10 @@ public partial class Etkinlik
 
     public virtual ICollection<Kullanici> Kullanici { get; set; }
 
+    public virtual Sporlar Sporlar { get; set; }
+
+    public virtual Mekan Mekan { get; set; }
+
 }
 
 }

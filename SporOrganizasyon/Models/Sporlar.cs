@@ -24,6 +24,8 @@ public partial class Sporlar
 
         this.Kullanici = new HashSet<Kullanici>();
 
+        this.Etkinlik = new HashSet<Etkinlik>();
+
     }
 
 
@@ -38,6 +40,10 @@ public partial class Sporlar
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Kullanici> Kullanici { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Etkinlik> Etkinlik { get; set; }
 
 }
 

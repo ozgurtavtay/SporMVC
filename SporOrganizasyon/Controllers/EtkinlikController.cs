@@ -10,19 +10,18 @@ using SporOrganizasyon.Models;
 
 namespace SporOrganizasyon.Controllers
 {
-    [Authorize]
-    public class EtkinliksController : Controller
+    public class EtkinlikController : Controller
     {
         private SporOEntities db = new SporOEntities();
 
-        // GET: Etkinliks
+        // GET: Etkinlik
         public ActionResult Index()
         {
             var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi);
             return View(etkinlik.ToList());
         }
 
-        // GET: Etkinliks/Details/5
+        // GET: Etkinlik/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,15 +36,14 @@ namespace SporOrganizasyon.Controllers
             return View(etkinlik);
         }
 
-        // GET: Etkinliks/Create
+        // GET: Etkinlik/Create
         public ActionResult Create()
         {
-            ViewBag.Sporlar = new SelectList(db.Sporlar, "SporId", "SporAdi");
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip");
             return View();
         }
 
-        // POST: Etkinliks/Create
+        // POST: Etkinlik/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +61,7 @@ namespace SporOrganizasyon.Controllers
             return View(etkinlik);
         }
 
-        // GET: Etkinliks/Edit/5
+        // GET: Etkinlik/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +77,7 @@ namespace SporOrganizasyon.Controllers
             return View(etkinlik);
         }
 
-        // POST: Etkinliks/Edit/5
+        // POST: Etkinlik/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -96,7 +94,7 @@ namespace SporOrganizasyon.Controllers
             return View(etkinlik);
         }
 
-        // GET: Etkinliks/Delete/5
+        // GET: Etkinlik/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,7 +109,7 @@ namespace SporOrganizasyon.Controllers
             return View(etkinlik);
         }
 
-        // POST: Etkinliks/Delete/5
+        // POST: Etkinlik/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
