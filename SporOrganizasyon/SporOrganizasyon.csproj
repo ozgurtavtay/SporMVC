@@ -271,7 +271,7 @@
     <Content Include="Views\Etkinlik\Create.cshtml" />
     <Content Include="Views\Etkinlik\Delete.cshtml" />
     <Content Include="Views\Etkinlik\Edit.cshtml" />
-    <Content Include="Views\Etkinlik\Index.cshtml" />
+    <Content Include="Views\Kullanici\Etkinlikler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

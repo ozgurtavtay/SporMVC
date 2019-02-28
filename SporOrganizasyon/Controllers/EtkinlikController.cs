@@ -10,26 +10,11 @@ using SporOrganizasyon.Models;
 
 namespace SporOrganizasyon.Controllers
 {
+    [Authorize]
     public class EtkinlikController : Controller
     {
         private SporOEntities db = new SporOEntities();
         SessionContext context = new SessionContext();    
-
-        // GET: Etkinlik
-        public ActionResult Index()
-        {
-            ViewBag.isLogin = false;
-            ViewBag.User = "";
-            int? id = null;
-            if (context.GetUserData() != null)
-            {
-                ViewBag.isLogin = true;
-                ViewBag.User = context.GetUserData().Ad;
-                id = context.GetUserData().Kid;
-            }
-            var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi).Include(e => e.Sporlar).Include(e => e.Mekan);
-            return View(etkinlik.ToList());
-        }
 
         // GET: Etkinlik/Details/5
         public ActionResult Details(int? id)

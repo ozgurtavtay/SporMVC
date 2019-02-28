@@ -62,7 +62,7 @@ namespace SporOrganizasyon.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Kid,Ad,Soyad,Email,Telefon,Sifre,Ilce,DogumTarihi,Cinsiyet,isLogin")] Kullanici kullanici)
+        public ActionResult Edit([Bind(Include = "Kid,Ad,Soyad,Email,Telefon,Sifre,Ilce,DogumTarihi,Cinsiyet")] Kullanici kullanici)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +71,21 @@ namespace SporOrganizasyon.Controllers
                 return RedirectToAction("Index");
             }
             return View(kullanici);
+        }
+
+        public ActionResult Etkinlikler()
+        {
+            ViewBag.isLogin = false;
+            ViewBag.User = "";
+            int? id = null;
+            if (context.GetUserData() != null)
+            {
+                ViewBag.isLogin = true;
+                ViewBag.User = context.GetUserData().Ad;
+                id = context.GetUserData().Kid;
+            }
+            var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi).Include(e => e.Sporlar).Include(e => e.Mekan).Where(e => e.Kurucu == id);
+            return View(etkinlik.ToList());
         }
 
         protected override void Dispose(bool disposing)

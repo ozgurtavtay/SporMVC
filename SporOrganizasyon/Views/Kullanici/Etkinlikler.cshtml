@@ -19,7 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Kontenjan)
             </th>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.EtkinlikTipi.Tip)
             </th>
@@ -44,7 +44,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Kontenjan)
                 </td>
-               
+
                 <td>
                     @Html.DisplayFor(modelItem => item.EtkinlikTipi.Tip)
                 </td>
@@ -55,8 +55,8 @@
                     @Html.DisplayFor(modelItem => item.Mekan.MekanAdi)
                 </td>
                 <td>
-                    @Html.ActionLink("Düzenle", "Edit", new { id = item.EtkinlikId }, new { @class = "btn btn-info" })
-                    @Html.ActionLink("Sil", "Delete", new { id = item.EtkinlikId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Düzenle", "Edit", "Etkinlik",new { id = item.EtkinlikId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Sil", "Delete", "Etkinlik", new { id = item.EtkinlikId }, new { @class = "btn btn-warning" })
                 </td>
             </tr>
         }
