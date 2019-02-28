@@ -19,6 +19,7 @@ namespace SporOrganizasyon.Models
         {
             this.Etkinlik = new HashSet<Etkinlik>();
             this.Sporlar = new HashSet<Sporlar>();
+            this.Etkinlik1 = new HashSet<Etkinlik>();
         }
     
         public int Kid { get; set; }
@@ -36,5 +37,7 @@ namespace SporOrganizasyon.Models
         public virtual ICollection<Etkinlik> Etkinlik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sporlar> Sporlar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Etkinlik> Etkinlik1 { get; set; }
     }
 }

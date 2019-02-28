@@ -20,6 +20,7 @@
         <AssociationConnector Association="SporOModel.FK_Mekan_Ilceler" ManuallyRouted="false" />
         <AssociationConnector Association="SporOModel.Katilanlar" ManuallyRouted="false" />
         <AssociationConnector Association="SporOModel.KullaniciSpor" ManuallyRouted="false" />
+        <AssociationConnector Association="SporOModel.FK_Etkinlik_Kullanici" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

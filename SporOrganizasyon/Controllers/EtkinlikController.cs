@@ -77,6 +77,7 @@ namespace SporOrganizasyon.Controllers
                 etkinlik.isActive = 1;
                 var User = context.GetUserData();
                 var kurucu = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
+                etkinlik.Kurucu = kurucu.Kid;
                 etkinlik.Kullanici.Add(kurucu);
                 db.Etkinlik.Add(etkinlik);
                 db.SaveChanges();

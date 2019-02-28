@@ -28,11 +28,13 @@ namespace SporOrganizasyon.Models
         public Nullable<int> Kontenjan { get; set; }
         public int isActive { get; set; }
         public int Sid { get; set; }
+        public Nullable<int> Kurucu { get; set; }
     
         public virtual EtkinlikTipi EtkinlikTipi { get; set; }
         public virtual Mekan Mekan { get; set; }
         public virtual Sporlar Sporlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kullanici> Kullanici { get; set; }
+        public virtual Kullanici Kullanici1 { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SporOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SporOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Etkinlik">
           <Key>
             <PropertyRef Name="EtkinlikId" />
@@ -17,6 +17,7 @@
           <Property Name="Kontenjan" Type="int" />
           <Property Name="isActive" Type="int" Nullable="false" />
           <Property Name="Sid" Type="int" Nullable="false" />
+          <Property Name="Kurucu" Type="int" />
         </EntityType>
         <EntityType Name="EtkinlikTipi">
           <Key>
@@ -109,6 +110,18 @@
             </Principal>
             <Dependent Role="Etkinlik">
               <PropertyRef Name="TipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Etkinlik_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Etkinlik" Type="Self.Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kid" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="Kurucu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -241,6 +254,10 @@
             <End Role="EtkinlikTipi" EntitySet="EtkinlikTipi" />
             <End Role="Etkinlik" EntitySet="Etkinlik" />
           </AssociationSet>
+          <AssociationSet Name="FK_Etkinlik_Kullanici" Association="Self.FK_Etkinlik_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
           <AssociationSet Name="FK_Etkinlik_Mekan" Association="Self.FK_Etkinlik_Mekan">
             <End Role="Mekan" EntitySet="Mekan" />
             <End Role="Etkinlik" EntitySet="Etkinlik" />
@@ -274,8 +291,7 @@
             <End Role="Mekan" EntitySet="Mekan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SporOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -295,6 +311,8 @@
           <NavigationProperty Name="Mekan" Relationship="Self.FK_Etkinlik_Mekan" FromRole="Etkinlik" ToRole="Mekan" />
           <NavigationProperty Name="Sporlar" Relationship="Self.FK_Etkinlik_Sporlar" FromRole="Etkinlik" ToRole="Sporlar" />
           <NavigationProperty Name="Kullanici" Relationship="Self.Katilanlar" FromRole="Etkinlik" ToRole="Kullanici" />
+          <Property Name="Kurucu" Type="Int32" />
+          <NavigationProperty Name="Kullanici1" Relationship="SporOModel.FK_Etkinlik_Kullanici" FromRole="Etkinlik" ToRole="Kullanici" />
         </EntityType>
         <EntityType Name="EtkinlikTipi">
           <Key>
@@ -351,6 +369,7 @@
           <Property Name="isLogin" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Etkinlik" Relationship="Self.Katilanlar" FromRole="Kullanici" ToRole="Etkinlik" />
           <NavigationProperty Name="Sporlar" Relationship="Self.KullaniciSpor" FromRole="Kullanici" ToRole="Sporlar" />
+          <NavigationProperty Name="Etkinlik1" Relationship="SporOModel.FK_Etkinlik_Kullanici" FromRole="Kullanici" ToRole="Etkinlik" />
         </EntityType>
         <EntityType Name="Mekan">
           <Key>
@@ -480,13 +499,17 @@
           <FunctionImport Name="EtkinlikAl" ReturnType="Collection(SporOModel.EtkinlikAl_Result)" />
           <FunctionImport Name="EtkinlikTarihKontrol" />
           <FunctionImport Name="IsLoginUser">
-            <Parameter Name="kid" Mode="In" Type="Int32" />
+          <Parameter Name="kid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="KullaniciSporEkle">
             <Parameter Name="kid" Mode="In" Type="Int32" />
             <Parameter Name="sid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SonKullanici" />
+          <AssociationSet Name="FK_Etkinlik_Kullanici" Association="SporOModel.FK_Etkinlik_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Etkinlik" EntitySet="Etkinlik" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="EtkinlikAl_Result">
           <Property Type="Int32" Name="EtkinlikId" Nullable="false" />
@@ -500,6 +523,18 @@
           <Property Type="Int32" Name="Kontenjan" Nullable="true" />
           <Property Type="Int32" Name="Katilanlar" Nullable="true" />
         </ComplexType>
+        <Association Name="FK_Etkinlik_Kullanici">
+          <End Type="SporOModel.Kullanici" Role="Kullanici" Multiplicity="0..1" />
+          <End Type="SporOModel.Etkinlik" Role="Etkinlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kid" />
+            </Principal>
+            <Dependent Role="Etkinlik">
+              <PropertyRef Name="Kurucu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -509,6 +544,7 @@
           <EntitySetMapping Name="Etkinlik">
             <EntityTypeMapping TypeName="SporOModel.Etkinlik">
               <MappingFragment StoreEntitySet="Etkinlik">
+                <ScalarProperty Name="Kurucu" ColumnName="Kurucu" />
                 <ScalarProperty Name="EtkinlikId" ColumnName="EtkinlikId" />
                 <ScalarProperty Name="EtkinlikAdi" ColumnName="EtkinlikAdi" />
                 <ScalarProperty Name="TipId" ColumnName="TipId" />
