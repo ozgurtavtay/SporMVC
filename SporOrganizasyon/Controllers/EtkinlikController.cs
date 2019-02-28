@@ -13,11 +13,21 @@ namespace SporOrganizasyon.Controllers
     public class EtkinlikController : Controller
     {
         private SporOEntities db = new SporOEntities();
+        SessionContext context = new SessionContext();    
 
         // GET: Etkinlik
         public ActionResult Index()
         {
-            var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi);
+            ViewBag.isLogin = false;
+            ViewBag.User = "";
+            int? id = null;
+            if (context.GetUserData() != null)
+            {
+                ViewBag.isLogin = true;
+                ViewBag.User = context.GetUserData().Ad;
+                id = context.GetUserData().Kid;
+            }
+            var etkinlik = db.Etkinlik.Include(e => e.EtkinlikTipi).Include(e => e.Sporlar).Include(e => e.Mekan);
             return View(etkinlik.ToList());
         }
 
@@ -39,7 +49,19 @@ namespace SporOrganizasyon.Controllers
         // GET: Etkinlik/Create
         public ActionResult Create()
         {
+            ViewBag.isLogin = false;
+            ViewBag.User = "";
+            int? id = null;
+            if (context.GetUserData() != null)
+            {
+                ViewBag.isLogin = true;
+                ViewBag.User = context.GetUserData().Ad;
+                id = context.GetUserData().Kid;
+            }
+
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip");
+            ViewBag.Sid = new SelectList(db.Sporlar, "SporId", "SporAdi");
+            ViewBag.MekanID = new SelectList(db.Mekan, "Mid", "MekanAdi");
             return View();
         }
 
@@ -58,6 +80,8 @@ namespace SporOrganizasyon.Controllers
             }
 
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            ViewBag.Sid = new SelectList(db.Sporlar, "SporId", "SporAdi", etkinlik.Sid);
+            ViewBag.MekanID = new SelectList(db.Mekan, "Mid", "MekanAdi", etkinlik.MekanID);
             return View(etkinlik);
         }
 
@@ -74,6 +98,8 @@ namespace SporOrganizasyon.Controllers
                 return HttpNotFound();
             }
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            ViewBag.Sid = new SelectList(db.Sporlar, "SporId", "SporAdi", etkinlik.Sid);
+            ViewBag.MekanID = new SelectList(db.Mekan, "Mid", "MekanAdi", etkinlik.MekanID);
             return View(etkinlik);
         }
 
@@ -91,6 +117,8 @@ namespace SporOrganizasyon.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
+            ViewBag.Sid = new SelectList(db.Sporlar, "SporId", "SporAdi", etkinlik.Sid);
+            ViewBag.MekanID = new SelectList(db.Mekan, "Mid", "MekanAdi", etkinlik.MekanID);
             return View(etkinlik);
         }
 

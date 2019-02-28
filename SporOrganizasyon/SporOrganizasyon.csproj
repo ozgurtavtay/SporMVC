@@ -158,7 +158,7 @@
     <Compile Include="Controllers\EtkinlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullanicisController.cs" />
-    <Compile Include="Controllers\MekansController.cs" />
+    <Compile Include="Controllers\MekanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,16 +274,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Kullanici\index.cshtml" />
+    <Content Include="Views\Mekan\Index.cshtml" />
     <Content Include="Views\Kullanici\Edit.cshtml" />
-    <Content Include="Views\Mekans\Create.cshtml" />
-    <Content Include="Views\Mekans\Delete.cshtml" />
-    <Content Include="Views\Mekans\Details.cshtml" />
-    <Content Include="Views\Mekans\Edit.cshtml" />
-    <Content Include="Views\Mekans\Index.cshtml" />
+    <Content Include="Views\Kullanici\Index.cshtml" />
     <Content Include="Views\Etkinlik\Create.cshtml" />
     <Content Include="Views\Etkinlik\Delete.cshtml" />
-    <Content Include="Views\Etkinlik\Details.cshtml" />
     <Content Include="Views\Etkinlik\Edit.cshtml" />
     <Content Include="Views\Etkinlik\Index.cshtml" />
   </ItemGroup>

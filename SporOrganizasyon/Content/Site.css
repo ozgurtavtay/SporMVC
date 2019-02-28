@@ -490,10 +490,12 @@ form.flowform {
     visibility: hidden;
     position: absolute;
     width: 100%;
+    display: none;
 }
 
     .typing-content div.form-question.visible {
         visibility: visible;
+        display: block;
     }
 
     .typing-content div.form-question label {

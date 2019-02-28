@@ -1,12 +1,10 @@
 ﻿@model SporOrganizasyon.Models.Kullanici
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Kullanici";
 }
 
-<h2>Details</h2>
-
-<div>
+<div class="container">
     <h4>Kullanici</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -43,14 +41,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sifre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sifre)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Ilce)
         </dt>
 
@@ -75,15 +65,9 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.isLogin)
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Kid }, new { @class = "btn btn-primary"})
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isLogin)
-        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Kid }) |
-</p>
+

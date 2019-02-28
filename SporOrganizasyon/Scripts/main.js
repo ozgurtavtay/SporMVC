@@ -1,4 +1,15 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
+
+    $("#Ilceler_Sehir").change(function () {
+        $.get("/Mekan/GetIlceler", { Sehir: $("#Ilceler_Sehir").val() }, function (data) {
+            $("#IlceId").empty();
+            $.each(data, function (index, row) {
+                $("#IlceId").append("<option value='" + row.Id + "'>" + row.Ad + "</option>")
+            });
+
+        });
+    })
+
     //if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
     var MQL = 1170;
 

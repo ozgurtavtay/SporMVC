@@ -11,12 +11,11 @@ using SporOrganizasyon.Models;
 namespace SporOrganizasyon.Controllers
 {
     [Authorize]
-    public class KullaniciController : Controller
+    public class MekanController : Controller
     {
         private SporOEntities db = new SporOEntities();
         SessionContext context = new SessionContext();
 
-        // GET: Kullanicis/Details/5
         public ActionResult Index()
         {
             ViewBag.isLogin = false;
@@ -28,49 +27,34 @@ namespace SporOrganizasyon.Controllers
                 ViewBag.User = context.GetUserData().Ad;
                 id = context.GetUserData().Kid;
             }
-            
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Kullanici kullanici = db.Kullanici.Find(id);
-            if (kullanici == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kullanici);
+
+            ViewBag.Iller = new SelectList(db.Iller.OrderBy(x => x.Sehir).ToList(), "Id", "Sehir");
+
+            return View();
         }
 
-        // GET: Kullanicis/Edit/5
-        public ActionResult Edit(int? id)
+        public JsonResult GetIlceler(int Sehir)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Kullanici kullanici = db.Kullanici.Find(id);
-            kullanici.Sifre = null;
-            if (kullanici == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kullanici);
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Ilceler> ilceler = db.Ilceler.Where(x => x.Sehir == Sehir).ToList();
+            return Json(ilceler, JsonRequestBehavior.AllowGet);
         }
 
-        // POST: Kullanicis/Edit/5
+        // POST: Mekans/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Kid,Ad,Soyad,Email,Telefon,Sifre,Ilce,DogumTarihi,Cinsiyet,isLogin")] Kullanici kullanici)
+        public ActionResult Index([Bind(Include = "Mid,MekanAdi,IlceId")] Mekan mekan)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kullanici).State = EntityState.Modified;
+                db.Mekan.Add(mekan);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
-            return View(kullanici);
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
