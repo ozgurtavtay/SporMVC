@@ -74,6 +74,10 @@ namespace SporOrganizasyon.Controllers
         {
             if (ModelState.IsValid)
             {
+                etkinlik.isActive = 1;
+                var User = context.GetUserData();
+                var kurucu = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
+                etkinlik.Kullanici.Add(kurucu);
                 db.Etkinlik.Add(etkinlik);
                 db.SaveChanges();
                 return RedirectToAction("Index");

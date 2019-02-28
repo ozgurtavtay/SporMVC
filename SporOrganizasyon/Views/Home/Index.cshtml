@@ -99,9 +99,14 @@
                 <button type="button" class="btn btn-default flowbutton register" id="q7btn">continue</button>
             </div>
             <div class="form-question register">
-                @Html.LabelFor(model => model.Item1.Cinsiyet)
-                @Html.EditorFor(model => model.Item1.Cinsiyet, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q8btn" } })
+                @Html.LabelFor(model => model.Item1.Cinsiyet)                
+                @Html.DropDownListFor(model => model.Item1.Cinsiyet, new List<SelectListItem>
+    {
+    new SelectListItem { Text = "Erkek", Value ="0"},
+    new SelectListItem { Text = "Kadın", Value ="1"},
+    }, "Cinsiyet Seç", new { @class = "form-control register toenter", targetbtn = "q8btn" })
                 @Html.ValidationMessageFor(model => model.Item1.Cinsiyet, "", new { @class = "text-danger" })
+
                 <button type="button" class="btn btn-default backbutton register">Geri</button>
                 <button type="button" class="btn btn-default flowbutton register" id="q8btn">continue</button>
             </div>

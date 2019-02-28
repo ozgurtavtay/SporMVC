@@ -157,63 +157,54 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EtkinlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KullanicisController.cs" />
+    <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\MekanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ErrorLog.cs" />
     <Compile Include="Models\Etkinlik.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EtkinlikAl_Result.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EtkinlikTipi.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HataLoglari.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ilceler.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Iller.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kullanici.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mekan.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSpor.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpor.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSpor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSpor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSpor.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionContext.cs" />
-    <Compile Include="Models\Spor.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Spor.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Spor.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Spor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Spor.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Spor.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Sporlar.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Spor.tt</DependentUpon>
+      <DependentUpon>ModelSpor.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserApplication.cs" />
     <Compile Include="Models\UserRepository.cs" />
@@ -227,27 +218,27 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Spor.Context.tt">
+    <Content Include="Models\ModelSpor.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Spor.Context.cs</LastGenOutput>
-      <DependentUpon>Spor.edmx</DependentUpon>
+      <DependentUpon>ModelSpor.edmx</DependentUpon>
+      <LastGenOutput>ModelSpor.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Spor.tt">
+    <Content Include="Models\ModelSpor.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Spor.edmx</DependentUpon>
-      <LastGenOutput>Spor.cs</LastGenOutput>
+      <DependentUpon>ModelSpor.edmx</DependentUpon>
+      <LastGenOutput>ModelSpor.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Spor.edmx">
+    <EntityDeploy Include="Models\ModelSpor.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Spor.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelSpor.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Spor.edmx.diagram">
-      <DependentUpon>Spor.edmx</DependentUpon>
+    <Content Include="Models\ModelSpor.edmx.diagram">
+      <DependentUpon>ModelSpor.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
