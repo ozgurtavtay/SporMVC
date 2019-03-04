@@ -58,10 +58,11 @@ namespace SporOrganizasyon.Controllers
             var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
             if (etkinlik.Kullanici.Contains(katilan))
             {
-                return RedirectToAction("Index");
+                TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Bu etkinliğe zaten kayıtlısınız!'});</script>";
             }
             else
             {
+                TempData["msg"] = "";
                 etkinlik.Kullanici.Add(katilan);
                 db.SaveChanges();
             }           
@@ -74,8 +75,17 @@ namespace SporOrganizasyon.Controllers
             var User = context.GetUserData();
             var katilan = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
             var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
-            etkinlik.Kullanici.Remove(katilan);
-            db.SaveChanges();
+
+            if (etkinlik.Kullanici.Contains(katilan))
+            {
+                TempData["msg"] = "";
+                etkinlik.Kullanici.Remove(katilan);
+                db.SaveChanges();                             
+            }
+            else
+            {
+                TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Kayıtlı olmadığınız etkinlikten çıkamazsınız!'});</script>";                
+            }
             return RedirectToAction("Index");
         }
 

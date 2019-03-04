@@ -11,6 +11,7 @@ html,
 body {
     height: 100%;
     color: white;
+    font-size: 16px;
 }
 
 .content {
@@ -23,10 +24,17 @@ a {
     text-decoration: none;
 }
 
-    a:hover {
-        transition: all 1s;
-        text-decoration: none;
-    }
+a:hover {
+    transition: all 1s;
+    text-decoration: none;
+}
+
+a.Logout {
+    position: absolute;
+    right: 15px;
+    top: 23px;
+    z-index: 10;
+}
 
 ul {
     padding: 0;
@@ -305,7 +313,7 @@ header.menu-is-open {
 }
 
 .main {
-    min-height: 100%;
+    min-height: 100vh;
     background-color: #03263d;
     padding: 80px 0 0;
 }
