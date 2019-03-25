@@ -11,7 +11,8 @@ namespace SporOrganizasyon.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Kullanici
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +24,21 @@ namespace SporOrganizasyon.Models
         }
     
         public int Kid { get; set; }
+        [Required]
         public string Ad { get; set; }
+        [Required]
         public string Soyad { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         public string Telefon { get; set; }
+        [Required]
         public string Sifre { get; set; }
+        [Required]
         public string Ilce { get; set; }
         public Nullable<System.DateTime> DogumTarihi { get; set; }
+        [Required]
         public Nullable<int> Cinsiyet { get; set; }
         public int isLogin { get; set; }
     

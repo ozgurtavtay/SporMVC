@@ -148,7 +148,7 @@ jQuery(document).ready(function ($) {
                 navigation2.addClass('fade-in');
             });
             // Form Focus
-            $("#q1").focus();
+            $("#Item1_Ad").focus();
         } else {
             //navigation is open - close it and remove navigation layer
             toggleNav2.removeClass('close-nav');

@@ -2,7 +2,7 @@
 @using SporOrganizasyon.Models
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Sporty";
     ViewBag.Etkinlik = new Etkinlik();
 }
 
@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-question register">
                     @Html.LabelFor(model => model.Item1.Email)
-                    @Html.EditorFor(model => model.Item1.Email, new { htmlAttributes = new { @class = "form-control register toenter", targetbtn = "q3btn" } })
+                    @Html.EditorFor(model => model.Item1.Email, new { htmlAttributes = new { @class = "form-control register toenter", type = "text", targetbtn = "q3btn" } })
                     @Html.ValidationMessageFor(model => model.Item1.Email, "", new { @class = "text-danger" })
                     <button type="button" class="btn btn-default backbutton register">Geri</button>
                     <button type="button" class="btn btn-default flowbutton register" id="q3btn">continue</button>

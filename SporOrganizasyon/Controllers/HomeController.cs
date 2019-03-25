@@ -13,7 +13,7 @@ namespace SporOrganizasyon.Controllers
 {
     public class HomeController : Controller
     {
-        private SporOEntities db = new SporOEntities();
+        SporOEntities db = new SporOEntities();
         UserApplication userApp = new UserApplication();
         SessionContext context = new SessionContext();       
 
@@ -35,7 +35,7 @@ namespace SporOrganizasyon.Controllers
         public ActionResult Login(Kullanici user)
         {
             var authenticatedUser = userApp.GetByUsernameAndPassword(user);
-            if (authenticatedUser != null)
+            if (authenticatedUser.Email != null)
             {
                 context.SetAuthenticationToken(authenticatedUser.Kid.ToString(), false, authenticatedUser);
                 return RedirectToAction("Index", "Home");
@@ -58,18 +58,28 @@ namespace SporOrganizasyon.Controllers
         {
             var EtkinlikId = Convert.ToInt32(id);
             var User = context.GetUserData();
-            var katilan = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
-            var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
-            if (etkinlik.Kullanici.Contains(katilan))
+
+            if (User != null)
             {
-                TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Bu etkinliğe zaten kayıtlısınız!'});</script>";
+                var katilan = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
+                var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
+                if (etkinlik.Kullanici.Contains(katilan))
+                {
+                    TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Bu etkinliğe zaten kayıtlısınız!'});</script>";
+                }
+                else
+                {
+                    TempData["msg"] = "";
+                    etkinlik.Kullanici.Add(katilan);
+                    db.SaveChanges();
+                }
             }
             else
             {
-                TempData["msg"] = "";
-                etkinlik.Kullanici.Add(katilan);
-                db.SaveChanges();
-            }           
+                TempData["msg"] = "<script>Swal.fire({ type: 'warning', text: 'Önce Giriş Yapmalısınız!'});</script>";
+            }
+
+                  
             return RedirectToAction("Index");
         }
 
@@ -77,19 +87,28 @@ namespace SporOrganizasyon.Controllers
         {
             var EtkinlikId = Convert.ToInt32(id);
             var User = context.GetUserData();
-            var katilan = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
-            var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
 
-            if (etkinlik.Kullanici.Contains(katilan))
+            if (User != null)
             {
-                TempData["msg"] = "";
-                etkinlik.Kullanici.Remove(katilan);
-                db.SaveChanges();                             
+                var katilan = (from k in db.Kullanici where k.Kid == User.Kid select k).SingleOrDefault();
+                var etkinlik = (from e in db.Etkinlik where e.EtkinlikId == EtkinlikId select e).SingleOrDefault();
+
+                if (etkinlik.Kullanici.Contains(katilan))
+                {
+                    TempData["msg"] = "";
+                    etkinlik.Kullanici.Remove(katilan);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Kayıtlı olmadığınız etkinlikten çıkamazsınız!'});</script>";
+                }
             }
             else
             {
-                TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Kayıtlı olmadığınız etkinlikten çıkamazsınız!'});</script>";                
+                TempData["msg"] = "<script>Swal.fire({ type: 'warning', text: 'Önce Giriş Yapmalısınız!'});</script>";
             }
+            
             return RedirectToAction("Index");
         }
 
@@ -108,12 +127,22 @@ namespace SporOrganizasyon.Controllers
                 kullanici.Sporlar = Sporlar;
                 db.Kullanici.Add(kullanici);
                 db.SaveChanges();
-
-
-                return RedirectToAction("Index");
             }
+            else
+            {
+                string msg = "";
 
-            return View(kullanici);
+                foreach (var items in ModelState.Values)
+                {
+                    foreach (var er in items.Errors)
+                    {
+
+                        msg = er.ErrorMessage.ToString() +  " " + msg;
+                    }
+                }
+                TempData["msg"] = "<script>Swal.fire({ type: 'info', text: '" + msg + "'});</script>";
+            }
+            return RedirectToAction("Index");
         }
     }
 }
