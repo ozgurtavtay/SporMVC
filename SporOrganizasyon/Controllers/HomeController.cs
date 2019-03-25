@@ -40,8 +40,12 @@ namespace SporOrganizasyon.Controllers
                 context.SetAuthenticationToken(authenticatedUser.Kid.ToString(), false, authenticatedUser);
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                TempData["msg"] = "<script>Swal.fire({ type: 'error', text: 'Bilgileriniz Kontrol Ediniz!'});</script>";
+            }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logout()

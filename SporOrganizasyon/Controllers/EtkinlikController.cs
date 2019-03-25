@@ -13,7 +13,7 @@ namespace SporOrganizasyon.Controllers
     [Authorize]
     public class EtkinlikController : Controller
     {
-        private SporOEntities db = new SporOEntities();
+        SporOEntities db = new SporOEntities();
         SessionContext context = new SessionContext();    
 
         // GET: Etkinlik/Details/5
@@ -66,7 +66,7 @@ namespace SporOrganizasyon.Controllers
                 etkinlik.Kullanici.Add(kurucu);
                 db.Etkinlik.Add(etkinlik);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(Url.Content("~/"));
             }
 
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
@@ -104,7 +104,7 @@ namespace SporOrganizasyon.Controllers
             {
                 db.Entry(etkinlik).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(Url.Content("~/"));
             }
             ViewBag.TipId = new SelectList(db.EtkinlikTipi, "TipId", "Tip", etkinlik.TipId);
             ViewBag.Sid = new SelectList(db.Sporlar, "SporId", "SporAdi", etkinlik.Sid);
@@ -135,7 +135,7 @@ namespace SporOrganizasyon.Controllers
             Etkinlik etkinlik = db.Etkinlik.Find(id);
             db.Etkinlik.Remove(etkinlik);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect(Url.Content("~/"));
         }
 
         protected override void Dispose(bool disposing)
